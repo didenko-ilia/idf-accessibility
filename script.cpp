@@ -9,6 +9,8 @@
 
 using namespace std;
 
+string URL;
+
 static char errorBuffer[CURL_ERROR_SIZE];
 
 // source https://curl.se/libcurl/c/htmltitle.html
@@ -106,9 +108,9 @@ long long parseTravelTime(std::string &jsonString) {
   return json_integer_value(duration);
 }
 
-string queryAtoB(string coordA, string coordB) {
+string queryAtoB(string coordA, string coordB, string ip) {
   string buffer;
-  string url = "http://192.168.0.20:8080/otp/routers/default/plan?";
+  string url = "http://" + ip + "/otp/routers/default/plan?";
   string fromCoord = coordA;
   url += "fromPlace=" + fromCoord;
   string toCoord = coordB;
@@ -124,19 +126,24 @@ string queryAtoB(string coordA, string coordB) {
   return buffer;
 }
 
-int main()
+int main(int argc, char* argv[])
 {
+  if (argc < 1) {
+    cout << "Missing ip/port pair of the OTP instance. Usage : ./script <addr>\n";
+    return 0;
+  }
+
+  string ip = argv[0];
+
   ifstream fin;
   fin.open("laposte_hexasmal.csv");
-  ofstream fout;
-  fout.open("codes_insee.csv");
   string s;
   vector<string> name;
   vector<string> coord;
   vector<string> code_insee;
   set<string> knownPostalCodes;
   while (getline(fin, s)) {
-    // split, take name and coords
+    // split, take name, code and coords
     vector<string> values;
     int prev = 0, pos = 0;
     do {
@@ -155,31 +162,30 @@ int main()
       coord.push_back(coordClean);
       code_insee.push_back(values[0]);
       knownPostalCodes.insert(values[2]);
-      fout << values[0] << '\n';
     }
   }
-  fout.close();
   fin.close();
 
-  // vector<double> accesibility;
-  // int N = name.size();
-  // for (int i = 0; i<N; ++i) {
-  //   int total = 0;
-  //   for (int j = 0; j<N; ++j) {
-  //     if (i != j) {
-  //       string queryJSON = queryAtoB(coord[j], coord[i]);
-  //       total += parseTravelTime(queryJSON);
-  //     }
-  //   }
-  //   double avg = 1.0*total / (N - 1);
-  //   accesibility.push_back(avg);
-  //   cout << name[i] << ' ' << coord[i] << ' ' << avg << '\n';
-  // }
+  vector<double> accesibility;
+  int N = name.size();
+  for (int i = 0; i<N; ++i) {
+    int total = 0;
+    for (int j = 0; j<N; ++j) {
+      if (i != j) {
+        string queryJSON = queryAtoB(coord[j], coord[i], ip);
+        total += parseTravelTime(queryJSON);
+      }
+    }
+    double avg = 1.0*total / (N - 1);
+    accesibility.push_back(avg);
+    cout << name[i] << ' ' << coord[i] << ' ' << avg << '\n';
+  }
 
-  // ofstream fout;
-  // fout.open("access_petite_couronne.csv");
-  // for (int i = 0; i<N; ++i) {
-  //   fout << name[i] << ';' << coord[i] << ';' << accesibility[i] << '\n';
-  // }
-  // fout.close();
+  ofstream fout;
+  fout.open("access_petite_couronne.csv");
+  fout << "Code_INSEE;Name;Coord;Access\n";
+  for (int i = 0; i<N; ++i) {
+    fout << code_insee[i] << ';' << name[i] << ';' << coord[i] << ';' << accesibility[i] << '\n';
+  }
+  fout.close();
 }

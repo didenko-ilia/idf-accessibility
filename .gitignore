@@ -1,0 +1,6 @@
+.ipynb_checkpoints/*
+.vscode/*
+
+map.html
+Communes_PC.json
+access*
