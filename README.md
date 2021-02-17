@@ -9,7 +9,7 @@ For OTP installation refer to the [Basic Tutorial](http://docs.opentripplanner.o
 After you download the jar file of OTP, place it into FOLD.
 As for the GTFS data of Ile de France, you need to download a csv file where you will find the link to download a zip file. Place this zip file in FOLD. As for Open Street Map (OSM) data, you need to download a pbf file, from the website indicated above, and place it into FOLD.
 
-Run OTP as explained in the tutorial. If you get an "Out of memory" exception, try to increase the memory limits, specified in the parameters.
+Run OTP as explained in the tutorial. If you get an "Out of memory" exception, try to increase the memory limits, specified in the parameters. For instance, I needed to give 8GB to OTP to make it run for Île de France.
 
 ## Library Installation
 The script uses two external libraries: libcurl and jansson. To instal them (on Linux):
