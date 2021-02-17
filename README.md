@@ -17,7 +17,7 @@ The script uses two external libraries: libcurl and jansson. To instal them (on 
 ./configure --prefix=DIR
 make 
 make check
-make install
+sudo make install
 ```
 Where DIR = A directory used by the C++ compiler, ex. /usr/local
 
