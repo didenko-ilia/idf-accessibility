@@ -2,8 +2,8 @@
 
 ## Library Installation
 The script uses two external libraries: libcurl and jansson. To instal them (on Linux):
-1. Download the libraries from the official website ([libcurl](https://curl.se/download.html), [jansson](http://digip.org/jansson/releases/)). I've used libcurl 7.74.0 and jansson 2.11
-2. Use the following commands :
+1. Download the libraries from the official website ([libcurl](https://curl.se/download.html), [jansson](http://digip.org/jansson/releases/)). Extract them into a folder of your choice. I've used libcurl 7.74.0 and jansson 2.11
+2. For each of the two libraries above, go to their respective folder. Then, use the following commands :
 ```{cmd}
 ./configure --prefix=DIR
 make 
