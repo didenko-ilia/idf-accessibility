@@ -16,12 +16,23 @@ The script uses two external libraries: libcurl and jansson. To instal them (on 
 1. Download the libraries from the official website ([libcurl](https://curl.se/download.html), [jansson](http://digip.org/jansson/releases/)). Extract them into a folder of your choice. I've used libcurl 7.74.0 and jansson 2.11
 2. For each of the two libraries above, go to their respective folder. Then, use the following commands :
 ```{cmd}
-./configure --prefix=DIR
+./configure
 make 
 make check
 sudo make install
 ```
-Where DIR = A directory used by the C++ compiler, ex. /usr/local
+
+Then, install again libcurl (true, it is redundant, but if I did not install the two versions of libcurl, I had problem in compilation and/or linking phase)
+```{cmd}
+sudo apt-get install libcurl3
+```
+
+## Compilation
+Compile script.cpp. On Ubuntu 18.04, the following command on the command line worked:
+```{cmd}
+cd FOLD
+gcc script.cpp -lcurl -ljansson -lstdc++ -o script
+```
 
 ## Usage
 ```
