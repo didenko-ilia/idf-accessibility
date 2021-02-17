@@ -2,7 +2,7 @@
 
 ## Open Street Planner Installation
 Before running the software, you must have a running version of Open Trip Planner (OTP) on a machine.
-For OTP installation refer to the [Basic Tutorial](http://docs.opentripplanner.org/en/latest/Basic-Tutorial/) using the [GTFS data](https://data.iledefrance-mobilites.fr/explore/dataset/offre-horaires-tc-gtfs-idf/information/) from IdF-Mobility and the [OSM data](http://download.geofabrik.de/europe/france/ile-de-france.html) for the Ile-de-France region.
+For OTP installation refer to the [Basic Tutorial](http://docs.opentripplanner.org/en/latest/Basic-Tutorial/) using the [GTFS data](https://data.iledefrance-mobilites.fr/explore/dataset/offre-horaires-tc-gtfs-idf/information/) from IdF-Mobility and the [OSM data](http://download.geofabrik.de/europe/france/ile-de-france.html) for the Ile-de-France region. As for the GTFS data of Ile de France, you should be able to find a zip file in their website.
 
 ## Library Installation
 The script uses two external libraries: libcurl and jansson. To instal them (on Linux):
