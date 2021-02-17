@@ -27,7 +27,7 @@ Where DIR = A directory used by the C++ compiler, ex. /usr/local
 ```
 ./script addr
 ```
-Where addr is an IP:PORT pair of the OTP instances running on the IDF data.  
+Where addr is an IP:PORT pair of the OTP instances running on the IDF data (if you followed the basic tutorial of OTP, it should be localhost:8080.  
 The script takes the position from a [dataset](https://datanova.laposte.fr/explore/dataset/laposte_hexasmal/) of LaPoste. It takes the data for the department codes that are of interest to us (i.e. Ile-de-France) and uses the included coordinates to calculate accessibility. Accessibility of A is calculated as the average travel time from all other point to the point A. A couple of gps coordinates have been modified by hand since they were in inaccessible places (rivers, lakes, airport).
 
 ## Visualization
