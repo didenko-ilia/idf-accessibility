@@ -128,12 +128,13 @@ string queryAtoB(string coordA, string coordB, string ip) {
 
 int main(int argc, char* argv[])
 {
-  if (argc < 1) {
+  if (argc < 2) {
     cout << "Missing ip/port pair of the OTP instance. Usage : ./script <addr>\n";
     return 0;
   }
 
-  string ip = argv[0];
+  string ip = argv[1];
+	cout << "Connecting to the OTP server on "<< ip << "\n";
 
   ifstream fin;
   fin.open("laposte_hexasmal.csv");
