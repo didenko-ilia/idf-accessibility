@@ -1,12 +1,13 @@
 # Accesibility
 
-Create an empty folder <FOLD> where you will put all the data related to the project.
+Create an empty folder FOLD (name it as you want) where you will put all the data related to the project.
 
 ## Open Street Planner Setup
 Before running the software, you must have a running version of Open Trip Planner (OTP) on a machine.
 For OTP installation refer to the [Basic Tutorial](http://docs.opentripplanner.org/en/latest/Basic-Tutorial/) using the [GTFS data](https://data.iledefrance-mobilites.fr/explore/dataset/offre-horaires-tc-gtfs-idf/information/) from IdF-Mobility and the [OSM data](http://download.geofabrik.de/europe/france/ile-de-france.html) for the Ile-de-France region. 
 
-As for the GTFS data of Ile de France, you need to download a csv file where you will find the link to download a zip file. Place this zip file in <FOLD>. As for Open Street Map (OSM) data, you need to download a pbf file, from the website indicated above.
+After you download the jar file of OTP, place it into FOLD.
+As for the GTFS data of Ile de France, you need to download a csv file where you will find the link to download a zip file. Place this zip file in FOLD. As for Open Street Map (OSM) data, you need to download a pbf file, from the website indicated above, and place it into FOLD.
 
 ## Library Installation
 The script uses two external libraries: libcurl and jansson. To instal them (on Linux):
